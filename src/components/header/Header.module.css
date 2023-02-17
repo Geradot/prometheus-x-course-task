@@ -1,0 +1,55 @@
+/******************** 
+*** Header **********
+********************/
+.main_header {
+    display: flex;
+    padding: 10px;
+    border: 2px solid black;
+    border-left: none;
+    border-right: none;
+    justify-content: space-between;
+}
+
+.main_header >p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    margin: auto 0;
+}
+
+.main_header p span:first-of-type {
+    text-transform: uppercase;
+}
+
+.main_header span {
+    display: inline-block;
+    font-weight: bold;
+}
+
+.main_header .right-block {
+    display: flex;
+    gap: 10px;
+}
+
+.main_header .cart {
+    cursor: pointer;
+}
+
+.main_header .cart,
+.main_header .user .user-photo {
+    width: 50px;
+}
+
+.main_header .sign-out {
+    align-self: center;
+    padding: 5px 10px;
+    cursor: pointer;
+
+}
+
+.main_header .user {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}

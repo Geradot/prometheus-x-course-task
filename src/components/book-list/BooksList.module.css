@@ -1,0 +1,100 @@
+/******************** 
+*** BookLists *******
+********************/
+.sort-select {
+    width: auto;
+}
+.top-fields {
+    gap: calc(var(--gap) * 2);
+}
+
+.top-fields input[name="book-name"] {
+    width: 250px;
+}
+.top-fields input[name="book-price"] {
+    width: 100px;
+}
+
+/********************
+**** Book Cover Block
+********************/
+.book-cover {
+    flex: 4;
+    gap: var(--gap);
+}
+
+.book-cover img {
+    display: block;
+    margin: 0 auto;
+    width: 250px;
+    border: 1px solid var(--gray);
+}
+
+.book-cover p {
+    text-align: justify;
+}
+
+/********************
+**** Book Info Block
+********************/
+.book-info {
+    flex: 3;
+    align-self: start;
+    gap: 20px;
+}
+
+.book-info .book-name {
+    font-weight: bold;
+}
+
+/********************
+**** Book Price Block
+********************/
+.book-price {
+    flex: 3;
+    align-self: start;
+    gap: 5px;
+    border: 3px dashed var(--gray);
+}
+
+.book-price div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.book-price div span,
+.book-price div label {
+    font-weight: bold;
+}
+
+.book-price .count {
+    align-items: center;
+}
+
+.book-price .total-price {
+    margin-bottom: 50px;
+}
+
+.book-price input {
+    width: 60px;
+    border-radius: 10px;
+    height: 25px;
+    border: 1px solid var(--gray);
+    text-align: right;
+}
+
+.book-price .add-to-card {
+    align-self: end;
+    padding: 5px;
+    font-weight: bold;
+}
+
+.books {
+    justify-content: center;
+}
+.card-width {
+    width: 200px;
+}
+.card-footer p {
+    margin: auto 0;
+}
