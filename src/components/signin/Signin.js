@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import classes from "./Signin.module.css";
 import clsx from 'clsx';
@@ -7,32 +7,47 @@ export default function Signin() {
     const navigator = useNavigate();
     const [username, setUsername] = useState('');
     const [isDisabled, setIsDisabled] = useState(true);
-    const [isClicked, setIsClicked] = useState(false);
+
+    const [possibleUser, setPossibleUser] = useState(null);
 
     useEffect(() => {
         setIsDisabled(!(username.length >= 4 && username.length <= 16));
     }, [username])
 
     useEffect(() => {
-        if (localStorage.getItem('username'))
+        if (localStorage.getItem('authorized_user'))
             navigator("/")
     }, [])
 
     useEffect(() => {
-        if (isClicked)
-            if (!localStorage.getItem('username')) {
-                localStorage.setItem('username', JSON.stringify(username));
-                navigator("/");
-            }
-    }, [isClicked]);
+        if (possibleUser) {
+            let users = JSON.parse(localStorage.getItem('users'));
 
+            if (users !== null) {
+                let existingUser = Object.keys(users).find(u => u === username)
+                if (!existingUser) {
+                    const user = { [username]: { 'cart': {} } }
+                    users = Object.assign(users, user)
+                    localStorage.setItem('users', JSON.stringify(users))
+                }
+            } else {
+                const user = { [username]: { 'cart': {} } }
+                users = user;
+                localStorage.setItem('users', JSON.stringify(users))
+            }
+
+            localStorage.setItem('authorized_user', JSON.stringify(possibleUser))
+            navigator("/");
+        }
+    }, [possibleUser])
+    
     return (
         <>
             <main className="d-flex flex-column justify-content-center align-items-center container x2-gap">
                 <img
                     className={classes[`user_photo`]}
                     src="/img/header/user.svg"
-                    alt="User's photo"
+                    alt="Avatar"
                 />
                 <form
                     className={
@@ -54,7 +69,10 @@ export default function Signin() {
                         id="user_name"
                     />
                     <button
-                        onClick={() => setIsClicked(true)}
+                        onClick={(e) => {
+                            e.preventDefault();
+                            setPossibleUser(username)
+                        }}
                         disabled={isDisabled}
                         className="btn btn-primary"
                     >Sign-In</button>

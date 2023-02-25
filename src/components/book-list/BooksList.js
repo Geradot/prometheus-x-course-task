@@ -4,21 +4,17 @@ import classes from "./BooksList.module.css";
 import { useState, useEffect, useMemo } from "react";
 import BookCard from "./BookCard";
 import BooksFilter from "../BooksFilter";
-import { useNavigate } from "react-router-dom";
 import Loader from "../UI/Loader/Loader";
 import { BooksContext } from "../BooksContext";
 
 export default function BooksList() {
     const [isBooksLoading, setIsBooksLoading] = useState(true);
-    const navigator = useNavigate();
-    if (!localStorage.getItem('username')) {
-        navigator("/signin");
-    }
-    let books = React.useContext(BooksContext);
+
+    const books = React.useContext(BooksContext);
+
     useEffect(() => {
-        if (books.length) {
+        if (books)
             setIsBooksLoading(false);
-        }
     }, [books])
 
     const [filter, setFilter] = useState({ price: '', query: '' })
@@ -26,6 +22,7 @@ export default function BooksList() {
     // Сортуємо книжки
     const sortedBooks =
         useMemo(() => {
+            if (!books) return [];
             switch (filter.price) {
                 case "0-15":
                     return [...books].filter(book => (book.price > 0 && book.price < 15))

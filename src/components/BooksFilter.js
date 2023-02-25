@@ -7,7 +7,7 @@ export default function BooksFilter({ filter, setFilter }) {
             <input
                 value={filter.query}
                 onChange={e => setFilter({ ...filter, query: e.target.value })}
-                style={{width: "auto"}}
+                style={{ width: "auto" }}
                 className="form-control"
                 type="search"
                 name="book-name"
@@ -24,24 +24,6 @@ export default function BooksFilter({ filter, setFilter }) {
                     { value: '30+', name: "price > 30" },
                 ]}
             />
-            {/* <input
-                className="form-control"
-                type="number"
-                name="book-price"
-                placeholder="Price"
-                style={{width: "100px"}}
-            /> */}
-            {/* <div className="hr-horizontal"></div> */}
-            {/* <MySelect
-                value={filter.sort}
-                onChange={selectedSort => setFilter({ ...filter, sort: selectedSort })}
-                defaultValue="Sorting"
-                options={[
-                    { value: '', name: "Don't sort" },
-                    { value: 'title', name: "By name" },
-                    { value: 'author', name: "By author" },
-                ]}
-            /> */}
         </div>
     )
 }

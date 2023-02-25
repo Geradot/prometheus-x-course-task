@@ -1,4 +1,4 @@
-import { getObjectOrBlank } from '../../App';
+import { getObject, clearCart, removeBookFromCart } from '../../App';
 import CartEmpty from './CartEmpty';
 import { useState, useEffect } from 'react';
 import MyButton from '../UI/button/MyButton';
@@ -6,47 +6,61 @@ import { Link } from 'react-router-dom';
 import React from 'react';
 
 function Cart() {
-    const [cart, setCart] = useState(getObjectOrBlank());
+    const [cart, setCart] = useState({});
 
-    const [cartKeys, setCartKeys] = useState(Object.keys(cart));
+    const [cartKeys, setCartKeys] = useState([]);
 
     const [totalPrice, setTotalPrice] = useState(0);
 
     const [isCartEmpty, setIsCartEmpty] = useState(null);
 
     useEffect(() => {
-        if (cartKeys.length)
-            setTotalPrice(cartKeys.reduce((total, key) => total + cart[key]['totalPrice'], 0).toFixed(2));
-        setIsCartEmpty(cartKeys.length > 0)
-    }, [cartKeys]);
+        let user = getObject() || {};
+        if (Object.keys(user['cart']).length > 0) {
+            setCart(user['cart']);
+        }
+        setIsCartEmpty(Object.keys(user['cart']).length === 0);
+    }, []);
 
     useEffect(() => {
-        setCartKeys(Object.keys(cart));
+        if (Object.keys(cart).length > 0) {
+            setCartKeys(Object.keys(cart) || []);
+            setIsCartEmpty(false);
+        } else {
+            setIsCartEmpty(true);
+        }
     }, [cart])
 
+    useEffect(() => {
+        if (cartKeys.length > 0)
+            setTotalPrice(cartKeys.reduce((total, key) => total + cart[key]['totalPrice'], 0).toFixed(2));
+    }, [cartKeys]);
+
+
     const deleteFromCart = (e) => {
-        let temp = getObjectOrBlank();
-        let id = e.target.dataset.id;
-        delete temp[id];
-        localStorage.setItem('cart', JSON.stringify(temp));
-        setCart(temp);
-        setCartKeys(Object.keys(temp));
+        removeBookFromCart(e.target.dataset.id)
+        let temp = getObject();
+        setCart(temp['cart']);
+        setCartKeys(Object.keys(temp['cart']));
+        setIsCartEmpty(Object.keys(temp['cart']).length === 0)
     };
 
     const clearLS = () => {
-        localStorage.removeItem('cart');
-        setCartKeys(Object.keys(getObjectOrBlank()))
+        clearCart();
+        setCart({});
+        setCartKeys([]);
+        setIsCartEmpty(true);
     }
 
     return (
         <main className="container d-flex flex-column col-xl-6 col-lg-7 col-md-9 col-sm-12 gap-3">
             <MyButton
-                disabled={!isCartEmpty}
+                disabled={isCartEmpty}
                 className={"btn btn-success align-self-end"}
                 onClick={clearLS}
             >Purchase</MyButton>
 
-            {!isCartEmpty
+            {cartKeys.length === 0
                 ?
                 <CartEmpty />
                 :
@@ -87,13 +101,9 @@ function Cart() {
                                     </td>
                                 </tr>
                             ))}
-                            <tr>
-                                <td colSpan={2}></td>
-                                <td className="fw-bold">Total:</td>
-                                <td className="fw-bold text-end">${totalPrice}</td>
-                            </tr>
                         </tbody>
                     </table>
+                    <p className="fw-bold text-end" style={{ paddingRight: "8px" }}>Total: ${totalPrice}</p>
                 </div>
             }
         </main>

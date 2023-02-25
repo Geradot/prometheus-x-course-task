@@ -3,17 +3,40 @@ import BooksList from './components/book-list/BooksList';
 import Error404 from './components/404/error404';
 import Cart from './components/cart/Cart';
 import Layout from './components/Layout';
-import { Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import SpecificBook from './components/specific-book/SpecificBook';
 import Signin from './components/signin/Signin';
 import React from 'react';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
-import { BooksContext, BooksProvider } from './components/BooksContext';
-import { useState, useEffect } from 'react';
+import { BooksProvider } from './components/BooksContext';
 
 // Беремо об'єкт з ЛС чи створюємо порожній.
-export function getObjectOrBlank() {
-  return JSON.parse(localStorage.getItem('cart')) || {};
+export function getObject() {
+  let authorizedUser = JSON.parse(localStorage.getItem('authorized_user'));
+  let users = JSON.parse(localStorage.getItem('users'));
+  return users[authorizedUser];
+}
+
+export function setUserCart(cart) {
+  let users = JSON.parse(localStorage.getItem('users'));
+  Object.assign(users[JSON.parse(localStorage.getItem('authorized_user'))], cart);
+  localStorage.setItem('users', JSON.stringify(users));
+}
+
+export function removeBookFromCart(bookID) {
+  let authorizedUser = JSON.parse(localStorage.getItem('authorized_user'));
+  let users = JSON.parse(localStorage.getItem('users'));
+
+  delete users[authorizedUser]['cart'][bookID];
+
+  localStorage.setItem('users', JSON.stringify(users));
+}
+
+export function clearCart() {
+  let users = JSON.parse(localStorage.getItem('users'));
+  let authorizedUser = JSON.parse(localStorage.getItem('authorized_user'));
+  users[authorizedUser]['cart'] = {};
+  localStorage.setItem('users', JSON.stringify(users));
 }
 
 export async function getBooks() {
@@ -22,18 +45,12 @@ export async function getBooks() {
   return res;
 }
 
+
 function App() {
 
-  const [books, setBooks] = useState([]);
-  useEffect(() => {
-    getBooks().then(data => {
-      setBooks(data.books);
-    })
-  }, [])
-
   return (
-    <>
-      <BooksContext.Provider value={books}>
+    <BooksProvider>
+      <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={
@@ -59,8 +76,8 @@ function App() {
             } />
           </Route>
         </Routes>
-      </BooksContext.Provider>
-    </>
+      </BrowserRouter>
+    </BooksProvider>
   );
 }
 

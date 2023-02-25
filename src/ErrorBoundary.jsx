@@ -15,8 +15,8 @@ class ErrorBoundary extends React.Component {
     }
     render() {
         if (this.state.hasError) {
-            return <div className="error">
-                Oops! Something went wrong.
+            return <div className="error d-flex justify-content-center align-items-center" style={{height: "100vh"}}>
+                <p className="h3 alert alert-danger col-auto">Oops! Something went wrong.</p>
             </div>
         } else {
             return this.props.children;

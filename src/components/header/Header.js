@@ -4,30 +4,45 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 function Header() {
-    const user = JSON.parse(localStorage.getItem('username'));
+    const user = JSON.parse(localStorage.getItem('authorized_user'));
     const navigator = useNavigate();
     const signout = () => {
-        localStorage.removeItem("username");
-        navigator("/");
+        localStorage.removeItem('authorized_user')
+        navigator("/signin");
     }
     return (
         <header className={clsx(classes.main_header)}>
-            <p><Link to="/"><span>X&#8209;course&nbsp;task</span></Link>
-                {user &&
-                    <>
-                        <span>/</span > <span>Прізвище&nbsp;Ім'я</span>
-                    </>
-                }
+            <p>
+                <Link to="/">
+                    <span>X&#8209;course&nbsp;task</span>
+                </Link>
+                <span>/</span > <span>Ryzhenko&nbsp;Anton</span>
             </p>
 
             <div className={clsx(classes[`right-block`])}>
                 {user
                     ?
                     <>
-                        <Link to="/cart"><img src="/img/header/cart.svg" alt="Cart" className={classes.cart} /></Link>
-                        <button onClick={signout} className={clsx("btn btn-primary", classes[`sign-out`])}>Sign&#8209;Out</button>
+                        <Link to="/cart">
+                            <img
+                                src="/img/header/cart.svg"
+                                alt="Cart"
+                                className={classes.cart}
+                            />
+                        </Link>
+                        <button
+                            onClick={signout}
+                            className={
+                                clsx("btn btn-primary",
+                                    classes[`sign-out`])
+                            }
+                        >Sign&#8209;Out</button>
                         <div className={classes.user}>
-                            <img src="/img/header/user.svg" alt="User's Photo" className={classes[`user-photo`]} />
+                            <img
+                                src="/img/header/user.svg"
+                                alt="Avatar"
+                                className={classes[`user-photo`]}
+                            />
                             <span>{user}</span>
                         </div>
                     </>

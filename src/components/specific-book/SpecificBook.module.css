@@ -153,9 +153,17 @@
 .book-price input {
     width: 60px;
     border-radius: 10px;
-    height: 25px;
+    height: 28px;
     border: 1px solid var(--bs-gray);
     text-align: right;
+    padding-right: 25px;
+}
+
+@media (max-width: 768px) and (min-width: 577px) {
+    label[for="count__value"] {
+        display: flex;
+        flex-direction: column;
+    }
 }
 
 .add-to-cart {
@@ -192,9 +200,24 @@
     }
 }
 
-.toast-container {
-    position: fixed;
-    bottom: 1rem;
-    right: 1rem;
-    z-index: 9999;
+.input__count {
+    position: relative;
+}
+
+.buttons-group {
+    position: absolute !important;
+    right: 0;
+}
+
+.buttons-group button {
+    font-size: 12px;
+    line-height: 1.2;
+    padding: 0px 6px;
+    padding-right: 7px;
+    border-top-right-radius: 9px;
+    border-bottom-right-radius: 9px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-width: 0px;
+    /* margin: auto 0; */
 }

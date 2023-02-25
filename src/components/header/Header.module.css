@@ -10,6 +10,18 @@
     justify-content: space-between;
 }
 
+@media (max-width: 576px) {
+    .main_header {
+        flex-direction: column;
+        gap: var(--gap);
+        justify-content: center;
+        align-items: center;
+    }
+    .main_header > p {
+        padding-bottom: 10px;
+        border-bottom: 1px solid var(--bs-gray);
+    }
+}
 .main_header >p {
     display: flex;
     align-items: center;
@@ -43,7 +55,7 @@
 
 .main_header .sign-out {
     align-self: center;
-    padding: 5px 10px;
+    padding: 10px 20px;
     cursor: pointer;
 
 }

@@ -1,8 +1,9 @@
 import React from 'react'
 import clsx from 'clsx';
 import classes from "./BooksList.module.css";
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 export default function BookCard(props) {
+    const location = useLocation();
     if (!props.book.image) props.book.image = '/img/img-not-found.png';
     return (
         <div className={clsx("card", classes[`card-width`])}>
@@ -16,13 +17,10 @@ export default function BookCard(props) {
             </div>
             <div className="d-flex base-gap justify-content-between align-items-center card-footer">
                 <p className="margin-vertical-center">${props.book.price}</p>
-                {/* 
-                TODO: quick adding and removing books on cards.
-                */ }
                 <Link
                     className="btn btn-primary"
                     to={{ pathname: `/book/${props.book.id}` }}
-                    state={props.book}
+                    state={{'book': props.book, 'username': location.state?.username}}
                 >View</Link>
             </div>
         </div>
