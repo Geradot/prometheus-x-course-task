@@ -1,0 +1,67 @@
+/******************** 
+*** Header **********
+********************/
+.main_header {
+    display: flex;
+    padding: 10px;
+    border: 2px solid black;
+    border-left: none;
+    border-right: none;
+    justify-content: space-between;
+}
+
+@media (max-width: 576px) {
+    .main_header {
+        flex-direction: column;
+        gap: var(--gap);
+        justify-content: center;
+        align-items: center;
+    }
+    .main_header > p {
+        padding-bottom: 10px;
+        border-bottom: 1px solid var(--bs-gray);
+    }
+}
+.main_header >p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    margin: auto 0;
+}
+
+.main_header p span:first-of-type {
+    text-transform: uppercase;
+}
+
+.main_header span {
+    display: inline-block;
+    font-weight: bold;
+}
+
+.main_header .right-block {
+    display: flex;
+    gap: 10px;
+}
+
+.main_header .cart {
+    cursor: pointer;
+}
+
+.main_header .cart,
+.main_header .user .user-photo {
+    width: 50px;
+}
+
+.main_header .sign-out {
+    align-self: center;
+    padding: 10px 20px;
+    cursor: pointer;
+
+}
+
+.main_header .user {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
