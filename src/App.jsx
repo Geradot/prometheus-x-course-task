@@ -3,7 +3,7 @@ import BooksList from './components/book-list/BooksList';
 import Error404 from './components/404/error404';
 import Cart from './components/cart/Cart';
 import Layout from './components/Layout';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, HashRouter, Route, Routes } from 'react-router-dom';
 import SpecificBook from './components/specific-book/SpecificBook';
 import Signin from './components/signin/Signin';
 import React from 'react';
@@ -50,7 +50,7 @@ function App() {
 
   return (
     <BooksProvider>
-      <BrowserRouter>
+      <HashRouter>
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={
@@ -76,7 +76,7 @@ function App() {
             } />
           </Route>
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </BooksProvider>
   );
 }

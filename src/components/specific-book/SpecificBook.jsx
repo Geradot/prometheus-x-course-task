@@ -9,7 +9,6 @@ import { BooksContext } from '../BooksContext';
 import MyButton from '../UI/button/MyButton';
 import { setUserCart } from '../../App';
 import { removeBookFromCart } from '../../App';
-import InputNumber from '../UI/inputs/inputNumber';
 const BUTTON_TITLES = {
     "add": "Add to Cart",
     "update": "Change count"
@@ -76,7 +75,7 @@ export default function SpecificBook() {
         const user = getObject();
         if (user['cart'][id]) {
             setIsInCart(true);
-            setBooksInCart(` (now in cart: ${user['cart'][id]['count']})`);
+            setBooksInCart(` (in cart: ${user['cart'][id]['count']})`);
         } else {
             setBooksInCart('');
         }
@@ -92,13 +91,12 @@ export default function SpecificBook() {
         }
         setUserCart(user);
         setIsInCart(true);
-        setBooksInCart(` (now in cart: ${user['cart'][book.id]['count']})`);
+        setBooksInCart(` (in cart: ${user['cart'][book.id]['count']})`);
     }
 
     const deleteFromCart = () => {
         removeBookFromCart(book.id);
         setIsInCart(false);
-        // setCount(1);
         setBooksInCart('');
     }
 
@@ -138,6 +136,14 @@ export default function SpecificBook() {
                                 <span className={classes[`count-in-cart`]}>{booksInCart}</span>
                             </label>
                             <div className={classes[`input__count`]}>
+
+                                <button
+                                    type="button"
+                                    disabled={count <= 1}
+                                    className='btn btn-secondary'
+                                    data-testid="decrement"
+                                    onClick={decrement}
+                                >-</button>
                                 <input
                                     type="text"
                                     id="count__value"
@@ -146,20 +152,13 @@ export default function SpecificBook() {
                                     className={classes[`value`]}
                                     data-value={count}
                                 />
-                                <div className={clsx("btn-group-vertical", classes[`buttons-group`])} role="group" aria-label="Vertical button group">
-                                    <button
-                                        type="button"
-                                        className='btn btn-secondary'
-                                        data-testid="increment"
-                                        onClick={increment}
-                                    >+</button>
-                                    <button
-                                        type="button"
-                                        className='btn btn-secondary'
-                                        data-testid="decrement"
-                                        onClick={decrement}
-                                    >-</button>
-                                </div>
+                                <button
+                                    type="button"
+                                    disabled={count >= 42}
+                                    className='btn btn-secondary'
+                                    data-testid="increment"
+                                    onClick={increment}
+                                >+</button>
                             </div>
                         </div>
                         {isOutOfRange &&
@@ -169,7 +168,10 @@ export default function SpecificBook() {
                         }
                         <div className={classes[`total-price`]}>
                             <span className={classes[`text`]}>Total price</span>
-                            <span data-testid="total-price" className={classes[`value`]}>{total}</span>
+                            <span
+                                data-testid="total-price"
+                                className={classes[`value`]}
+                            >{total}</span>
                         </div>
                         <div className={clsx("gap-3", classes[`buttons`])}>
                             {isInCart &&

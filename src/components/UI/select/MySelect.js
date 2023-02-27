@@ -2,7 +2,7 @@ import React from 'react'
 export default function MySelect({ options, defaultValue, value, onChange }) {
     return (
         <select
-            className="form-select form-select-sm"
+            className="form-select"
             style={{ width: "auto" }}
             value={value}
             onChange={event => onChange(event.target.value)}

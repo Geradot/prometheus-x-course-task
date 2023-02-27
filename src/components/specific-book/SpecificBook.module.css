@@ -22,8 +22,8 @@
 *********************/
 .book-cover {
     display: flex;
-    justify-content: start;
-    align-items: start;
+    justify-content: flex-start;
+    align-items: flex-start;
     grid-column: 1;
 }
 
@@ -82,7 +82,7 @@
     flex-direction: column;
     justify-content: center;
     grid-column: 2;
-    align-self: start;
+    align-self: flex-start;
     gap: var(--gap);
 }
 
@@ -113,7 +113,7 @@
     display: flex;
     flex-direction: column;
     flex: 3;
-    align-self: start;
+    align-self: flex-start;
     gap: 5px;
     border: 3px dashed var(--bs-gray);
 }
@@ -146,6 +146,15 @@
     align-items: center;
 }
 
+@media (max-width: 768px) and (min-width: 577px) {
+    .book-price .count {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+    }
+}
+
 .book-price .total-price {
     margin-bottom: 10px;
 }
@@ -156,15 +165,9 @@
     height: 28px;
     border: 1px solid var(--bs-gray);
     text-align: right;
-    padding-right: 25px;
+    padding-right: 20px;
 }
 
-@media (max-width: 768px) and (min-width: 577px) {
-    label[for="count__value"] {
-        display: flex;
-        flex-direction: column;
-    }
-}
 
 .add-to-cart {
     align-self: end;
@@ -202,9 +205,16 @@
 
 .input__count {
     position: relative;
+    gap: 10px;
 }
 
-.buttons-group {
+.input__count button {
+    height: 28px;
+    display: flex;
+    align-items: center;
+}
+
+/* .buttons-group {
     position: absolute !important;
     right: 0;
 }
@@ -219,5 +229,4 @@
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
     border-width: 0px;
-    /* margin: auto 0; */
-}
+} */

@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import SpecificBook from "./SpecificBook";
 import { MemoryRouter, useParams } from "react-router-dom";
 import { BooksContext } from "../BooksContext";

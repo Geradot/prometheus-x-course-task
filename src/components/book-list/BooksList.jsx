@@ -3,7 +3,7 @@ import clsx from "clsx";
 import classes from "./BooksList.module.css";
 import { useState, useEffect, useMemo } from "react";
 import BookCard from "./BookCard";
-import BooksFilter from "../BooksFilter";
+import BooksFilter from "./BooksFilter";
 import Loader from "../UI/Loader/Loader";
 import { BooksContext } from "../BooksContext";
 
@@ -37,11 +37,11 @@ export default function BooksList() {
 
     // Шукаємо книжки на основі фільтрів (завжди)
     const filteredAndSearchedBooks = useMemo(() => {
-        return sortedBooks.filter(book => book.title.toLowerCase().includes(filter.query))
+        return sortedBooks.filter(book => book.title.toLowerCase().includes((filter.query).toLowerCase()))
     }, [filter.query, sortedBooks])
 
     return (
-        <main className={clsx("d-flex flex-column container base-gap justify-content-start", classes[`booklist`])}>
+        <main className={clsx("d-flex flex-column container x2-gap justify-content-start", classes[`booklist`])}>
             <BooksFilter
                 filter={filter}
                 setFilter={setFilter}
