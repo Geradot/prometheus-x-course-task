@@ -49,7 +49,7 @@ function App() {
 
   return (
     <BooksProvider>
-      <HashRouter>
+      <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={
@@ -75,7 +75,7 @@ function App() {
             } />
           </Route>
         </Routes>
-      </HashRouter>
+      </BrowserRouter>
     </BooksProvider>
   );
 }
