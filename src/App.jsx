@@ -49,7 +49,7 @@ function App() {
 
   return (
     <BooksProvider>
-      <BrowserRouter>
+      <BrowserRouter basename='/prometheus-x-course-task'>
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={
