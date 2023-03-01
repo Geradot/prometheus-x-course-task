@@ -2,12 +2,12 @@ import React from 'react'
 import clsx from 'clsx';
 import classes from "./BooksList.module.css";
 import { Link, useLocation } from 'react-router-dom';
+import img_book from '../../img/img-not-found.png'
 export default function BookCard(props) {
     const location = useLocation();
-    if (!props.book.image) props.book.image = '/img/img-not-found.png';
     return (
         <div className={clsx("card", classes[`card-width`])}>
-            <img className="card-img-top" src={props.book.image} alt={props.book.title} />
+            <img className="card-img-top" src={props.book.image || img_book} alt={props.book.title} />
             <div className="card-body base-gap base-padding">
                 <p className="h6 card-title">
                     {props.book.title.length > 24

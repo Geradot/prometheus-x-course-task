@@ -3,12 +3,13 @@ import BooksList from './components/book-list/BooksList';
 import Error404 from './components/404/error404';
 import Cart from './components/cart/Cart';
 import Layout from './components/Layout';
-import { BrowserRouter, HashRouter, Route, Routes } from 'react-router-dom';
+import { HashRouter, Route, Routes } from 'react-router-dom';
 import SpecificBook from './components/specific-book/SpecificBook';
 import Signin from './components/signin/Signin';
 import React from 'react';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import { BooksProvider } from './components/BooksContext';
+import booksJson from './misc/books.json';
 
 // Беремо об'єкт з ЛС чи створюємо порожній.
 export function getObject() {
@@ -40,9 +41,7 @@ export function clearCart() {
 }
 
 export async function getBooks() {
-  const response = await fetch('/books.json');
-  const res = await response.json();
-  return res;
+  return booksJson;
 }
 
 

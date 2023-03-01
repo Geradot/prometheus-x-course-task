@@ -2,6 +2,8 @@ import classes from './Header.module.css';
 import clsx from "clsx";
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import img_cart from "../../img/header/cart.svg";
+import img_user from "../../img/header/user.png";
 
 function Header() {
     const user = JSON.parse(localStorage.getItem('authorized_user'));
@@ -25,7 +27,7 @@ function Header() {
                     <>
                         <Link to="/cart">
                             <img
-                                src="/img/header/cart.svg"
+                                src={img_cart}
                                 alt="Cart"
                                 className={classes.cart}
                             />
@@ -39,7 +41,7 @@ function Header() {
                         >Sign&#8209;Out</button>
                         <div className={classes.user}>
                             <img
-                                src="/img/header/user.svg"
+                                src={img_user}
                                 alt="Avatar"
                                 className={classes[`user-photo`]}
                             />

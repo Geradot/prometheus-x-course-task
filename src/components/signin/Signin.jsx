@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import classes from "./Signin.module.css";
 import clsx from 'clsx';
+import img_user from "../../img/header/user.png";
 
 export default function Signin() {
     const navigator = useNavigate();
@@ -46,7 +47,7 @@ export default function Signin() {
             <main className="d-flex flex-column justify-content-center align-items-center container x2-gap">
                 <img
                     className={classes[`user_photo`]}
-                    src="/img/header/user.svg"
+                    src={img_user}
                     alt="Avatar"
                 />
                 <form

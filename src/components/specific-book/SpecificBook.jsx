@@ -9,11 +9,13 @@ import { BooksContext } from '../BooksContext';
 import MyButton from '../UI/button/MyButton';
 import { setUserCart } from '../../App';
 import { removeBookFromCart } from '../../App';
-const BUTTON_TITLES = {
-    "add": "Add to Cart",
-    "update": "Change count"
-}
+import img_book from "../../img/img-not-found.png";
+
 export default function SpecificBook() {
+    const BUTTON_TITLES = {
+        "add": "Add to Cart",
+        "update": "Change count"
+    }
     const allBooks = React.useContext(BooksContext);
     const { id } = useParams();
     const [isLoaded, setIsLoaded] = useState(false);
@@ -116,7 +118,7 @@ export default function SpecificBook() {
                 :
                 <main data-testid="specific-book-details" className={clsx("container", classes[`specific-book`])}>
                     <section className={clsx(classes[`book-cover`], "base-padding")}>
-                        <img src={book.image || '/img/img-not-found.png'} alt={book.title} />
+                        <img src={book.image || img_book} alt={book.title} />
                     </section>
                     <section className={clsx(classes[`book-info`], "base-padding")}>
                         <h1 data-testid='book-title' className={clsx(classes[`book-name`], "h3")}>{book.title}</h1>
