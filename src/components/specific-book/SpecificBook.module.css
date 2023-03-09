@@ -115,7 +115,8 @@
     flex: 3;
     align-self: flex-start;
     gap: 5px;
-    border: 3px dashed var(--bs-gray);
+    outline: 3px dashed var(--bs-gray);
+    background: var(--bs-highlight-bg);
 }
 
 @media (max-width: 992px) {
@@ -132,13 +133,13 @@
     }
 }
 
-.book-price div {
+.book-price > :not(div:last-of-type) {
     display: flex;
     justify-content: space-between;
 }
 
-.book-price div span,
-.book-price div label {
+.book-price > :not(div:last-of-type) span,
+.book-price > :not(div:last-of-type) label {
     font-weight: bold;
 }
 
@@ -170,19 +171,16 @@
 
 
 .add-to-cart {
-    align-self: end;
     font-weight: bold;
-    margin-left: auto;
+    transition: press 0.2s ease;
+}
+.add-to-cart:active {
+    transform: translateY(2px)
 }
 
 .count-in-cart {
     font-weight: normal !important;
     font-style: italic;
-}
-
-.buttons {
-    display: flex;
-    flex-wrap: wrap;
 }
 
 @media (max-width: 769px) and (min-width: 577px) {
@@ -192,6 +190,9 @@
     }
 }
 
+.buttons {
+    justify-content: space-between;
+}
 @media (max-width: 1200px) and (min-width: 993px),
 (max-width: 768px) and (min-width: 577px) {
     .buttons {
@@ -199,13 +200,13 @@
     }
 
     .buttons button:first-of-type {
-        align-self: end !important;
+        /* align-self: end !important; */
     }
 }
 
 .input__count {
-    position: relative;
     gap: 10px;
+    display: flex;
 }
 
 .input__count button {

@@ -14,20 +14,21 @@ body {
   height: 100%;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 20px;
   position: relative;
 }
-#root > header {
+#root > header,
+#root > footer {
   flex: 0 0 auto;
+  background: #397ccb;
+  color: white;
 }
 #root > header + div,
 #root > header + main {
   flex: 1 0 auto;
   justify-content: start;
 }
-#root > footer {
-  flex: 0 0 auto;
-}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

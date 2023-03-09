@@ -15,7 +15,7 @@ function Header() {
     return (
         <header className={clsx(classes.main_header)}>
             <p>
-                <Link to="/">
+                <Link to="/" className='text-light'>
                     <span>X&#8209;course&nbsp;task</span>
                 </Link>
                 <span>/</span > <span>Ryzhenko&nbsp;Anton</span>
@@ -35,7 +35,7 @@ function Header() {
                         <button
                             onClick={signout}
                             className={
-                                clsx("btn btn-primary",
+                                clsx("btn btn-light",
                                     classes[`sign-out`])
                             }
                         >Sign&#8209;Out</button>
@@ -50,7 +50,10 @@ function Header() {
                     </>
                     :
                     <>
-                        <button onClick={() => { navigator("/signin") }} className={clsx("btn btn-primary", classes[`sign-out`])}>Sign&#8209;In</button>
+                        <button 
+                            onClick={() => { navigator("/signin") }} 
+                            className={clsx("btn btn-primary", classes[`sign-out`])}
+                        >Sign&#8209;In</button>
                     </>
                 }
             </div>

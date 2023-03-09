@@ -103,11 +103,11 @@ export default function SpecificBook() {
     }
 
     const increment = () => {
-        setCount(count + 1);
+        setCount(parseInt(count) + 1);
     }
 
     const decrement = () => {
-        setCount(count - 1);
+        setCount(parseInt(count) - 1);
     }
 
     return (
@@ -150,7 +150,7 @@ export default function SpecificBook() {
                                     type="text"
                                     id="count__value"
                                     value={count}
-                                    onChange={e => setCount(e.target.value)}
+                                    onInput={e => setCount(e.target.value)}
                                     className={classes[`value`]}
                                     data-value={count}
                                 />
@@ -175,12 +175,12 @@ export default function SpecificBook() {
                                 className={classes[`value`]}
                             >{total}</span>
                         </div>
-                        <div className={clsx("gap-3", classes[`buttons`])}>
+                        <div className={clsx("gap-2 d-flex", classes[`buttons`])}>
                             {isInCart &&
-                                <button
+                                <MyButton
                                     onClick={deleteFromCart}
                                     className="btn btn-outline-danger"
-                                >Remove from Cart</button>
+                                >Remove from Cart</MyButton>
                             }
                             <MyButton
                                 disabled={isDisabled}
@@ -198,9 +198,7 @@ export default function SpecificBook() {
                     </section>
 
                     <p className={classes[`book-description`]}>{book.description}</p>
-
                 </main>
-
             }
         </>
     )
