@@ -1,6 +1,6 @@
 function Footer() {
   return (
-    <footer className="text-center py-3 my-4">
+    <footer className="text-center py-3">
       <div>
         Виконано в{" "}
         <a

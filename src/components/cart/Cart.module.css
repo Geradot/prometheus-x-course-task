@@ -18,3 +18,14 @@ table tr td:nth-of-type(2),
 table tr th:nth-of-type(2) {
     text-align: center
 }
+table tr td:not(:first-of-type) {
+    width: 70px;
+}
+.remove-icon {
+    width: 20px;
+    height: 20px;
+    vertical-align: sub;
+}
+.remove-icon:hover {
+    filter: contrast(2)
+}

@@ -100,6 +100,7 @@ export default function SpecificBook() {
         removeBookFromCart(book.id);
         setIsInCart(false);
         setBooksInCart('');
+        setCount(1);
     }
 
     const increment = () => {
@@ -114,9 +115,9 @@ export default function SpecificBook() {
         <>
             {!isLoaded
                 ?
-                <main className="container d-flex justify-content-center"><Loader /></main>
+                <div className="container d-flex justify-content-center"><Loader /></div>
                 :
-                <main data-testid="specific-book-details" className={clsx("container", classes[`specific-book`])}>
+                <div data-testid="specific-book-details" className={clsx("container", classes[`specific-book`])}>
                     <section className={clsx(classes[`book-cover`], "base-padding")}>
                         <img src={book.image || img_book} alt={book.title} />
                     </section>
@@ -180,6 +181,7 @@ export default function SpecificBook() {
                                 <MyButton
                                     onClick={deleteFromCart}
                                     className="btn btn-outline-danger"
+                                    style={{"order": "1"}}
                                 >Remove from Cart</MyButton>
                             }
                             <MyButton
@@ -198,7 +200,7 @@ export default function SpecificBook() {
                     </section>
 
                     <p className={classes[`book-description`]}>{book.description}</p>
-                </main>
+                </div>
             }
         </>
     )

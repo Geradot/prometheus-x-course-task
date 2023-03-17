@@ -44,7 +44,7 @@ export default function Signin() {
     
     return (
         <>
-            <main className="d-flex flex-column justify-content-center align-items-center container x2-gap">
+            <div className="d-flex flex-column justify-content-center align-items-center container x2-gap">
                 <img
                     className={classes[`user_photo`]}
                     src={img_user}
@@ -78,7 +78,7 @@ export default function Signin() {
                         className="btn btn-primary"
                     >Sign-In</button>
                 </form>
-            </main>
+            </div>
         </>
     )
 }
