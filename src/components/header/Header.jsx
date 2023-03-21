@@ -52,7 +52,7 @@ function Header() {
                     <>
                         <button 
                             onClick={() => { navigator("/signin") }} 
-                            className={clsx("btn btn-primary", classes[`sign-out`])}
+                            className={clsx("btn btn-light", classes[`sign-out`])}
                         >Sign&#8209;In</button>
                     </>
                 }

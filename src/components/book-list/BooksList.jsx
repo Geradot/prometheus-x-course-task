@@ -5,7 +5,7 @@ import { useState, useEffect, useMemo } from "react";
 import BookCard from "./BookCard";
 import BooksFilter from "./BooksFilter";
 import Loader from "../UI/Loader/Loader";
-import { BooksContext } from "../BooksContext";
+import { BooksContext } from "../Context/BooksContext";
 
 export default function BooksList() {
   const [isBooksLoading, setIsBooksLoading] = useState(true);
@@ -58,7 +58,7 @@ export default function BooksList() {
             <BookCard book={book} key={book.id} />
           ))
         ) : (
-          <p className="display-6">Книги не знайдені...</p>
+          <p className="display-6">Books were not found...</p>
         )}
       </section>
     </div>

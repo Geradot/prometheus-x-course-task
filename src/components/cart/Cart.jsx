@@ -1,8 +1,7 @@
-import { getObject, clearCart, removeBookFromCart } from "../../App";
+import { getObject, clearCart, removeBookFromCart } from "../../js/helpers";
 import CartEmpty from "./CartEmpty";
 import { useState, useEffect } from "react";
 import MyButton from "../UI/button/MyButton";
-import { Link } from "react-router-dom";
 import remove_icon from "../../img/trash.svg";
 import classes from "./Cart.module.css";
 import React from "react";

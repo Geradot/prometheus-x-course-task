@@ -12,12 +12,12 @@ export default function Signin() {
     const [possibleUser, setPossibleUser] = useState(null);
 
     useEffect(() => {
-        setIsDisabled(!(username.length >= 4 && username.length <= 16));
+        setIsDisabled(!(username.length >= 4 && username.length <= 16 && !username.includes(" ")));
     }, [username])
 
     useEffect(() => {
         if (localStorage.getItem('authorized_user'))
-            navigator("/")
+            navigator("/books")
     }, [])
 
     useEffect(() => {
@@ -38,7 +38,7 @@ export default function Signin() {
             }
 
             localStorage.setItem('authorized_user', JSON.stringify(possibleUser))
-            navigator("/");
+            navigator("/books");
         }
     }, [possibleUser])
     

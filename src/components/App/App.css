@@ -1,7 +1,3 @@
-:root {
-  --gap: 10px;
-}
-
 .App {
   text-align: center;
 }
@@ -9,29 +5,6 @@
 .App-logo {
   height: 40vmin;
   pointer-events: none;
-}
-
-.base-gap {
-  gap: var(--gap);
-}
-.x2-gap {
-  gap: calc(var(--gap) * 2)
-}
-.x3-gap {
-  gap: calc(var(--gap) * 3)
-}
-.base-padding {
-  padding: 10px;
-}
-
-.margin-vertical-center {
-  margin: auto 0;
-}
-
-.hr-horizontal {
-  width: 1px;
-  height: 100%;
-  background-color: var(--bs-gray-500);
 }
 
 @media (prefers-reduced-motion: no-preference) {

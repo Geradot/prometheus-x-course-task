@@ -5,6 +5,6 @@ export default function PrivateRoute({ children }) {
   return (
     localStorage.getItem('authorized_user')
     ? children
-    : <Navigate to="/signin" />
+    : <Navigate to="/" />
   )
 }

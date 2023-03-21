@@ -1,9 +1,13 @@
+:root {
+  --gap: 10px;
+}
+
 html {
   height: 100%;
 }
 body {
   height: 100%;
-  background-color: #f9f9f9!important;
+  background-color: #f9f9f9 !important;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
@@ -44,4 +48,30 @@ code {
 
 a {
   cursor: pointer;
+}
+
+.base-gap {
+  gap: var(--gap);
+}
+
+.x2-gap {
+  gap: calc(var(--gap) * 2);
+}
+
+.x3-gap {
+  gap: calc(var(--gap) * 3);
+}
+
+.base-padding {
+  padding: 10px;
+}
+
+.margin-vertical-center {
+  margin: auto 0;
+}
+
+.hr-horizontal {
+  width: 1px;
+  height: 100%;
+  background-color: var(--bs-gray-500);
 }

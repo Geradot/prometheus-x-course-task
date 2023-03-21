@@ -2,13 +2,14 @@ import React from 'react'
 import clsx from 'clsx';
 import classes from "./BooksList.module.css";
 import { Link, useLocation } from 'react-router-dom';
-import img_book from '../../img/img-not-found.png'
+import img_book from '../../img/img-not-found.png';
+
 export default function BookCard(props) {
     const location = useLocation();
     return (
         <div className={clsx("card", classes[`card-width`])}>
             <Link
-                to={{ pathname: `/book/${props.book.id}` }}
+                to={{ pathname: `/books/${props.book.id}` }}
                 state={{'book': props.book, 'username': location.state?.username}}
             ><img 
                 className="card-img-top" 
@@ -26,7 +27,7 @@ export default function BookCard(props) {
                 <p className="margin-vertical-center">${props.book.price}</p>
                 <Link
                     className="btn btn-outline-secondary"
-                    to={{ pathname: `/book/${props.book.id}` }}
+                    to={{ pathname: `/books/${props.book.id}` }}
                     state={{'book': props.book, 'username': location.state?.username}}
                 >View</Link>
             </div>

@@ -3,12 +3,10 @@ import classes from "./SpecificBook.module.css";
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import clsx from 'clsx';
-import { getObject } from '../../App';
+import { getObject, setUserCart, removeBookFromCart } from '../../js/helpers';
 import Loader from '../UI/Loader/Loader';
-import { BooksContext } from '../BooksContext';
+import { BooksContext } from '../Context/BooksContext';
 import MyButton from '../UI/button/MyButton';
-import { setUserCart } from '../../App';
-import { removeBookFromCart } from '../../App';
 import img_book from "../../img/img-not-found.png";
 
 export default function SpecificBook() {
@@ -16,6 +14,9 @@ export default function SpecificBook() {
         "add": "Add to Cart",
         "update": "Change count"
     }
+
+    const [isNotFound, setIsNotFound] = useState(false);
+
     const allBooks = React.useContext(BooksContext);
     const { id } = useParams();
     const [isLoaded, setIsLoaded] = useState(false);
@@ -30,6 +31,8 @@ export default function SpecificBook() {
                 setBook(selectedBook);
                 setTotal((count * selectedBook.price).toFixed(2));
                 setIsLoaded(true);
+            } else {
+                setIsNotFound(true);
             }
         }
     }, [allBooks, id])
@@ -104,11 +107,20 @@ export default function SpecificBook() {
     }
 
     const increment = () => {
-        setCount(parseInt(count) + 1);
+        setCount(prev => parseInt(prev) + 1)
     }
 
     const decrement = () => {
-        setCount(parseInt(count) - 1);
+        setCount(prev => parseInt(prev) - 1);
+    }
+
+    if (isNotFound) {
+        return (
+            <div className='container d-flex flex-column align-items-center'>
+                <p className="display-5">This book was not found</p>
+                <p className="fs-5">Try to edit the request</p>
+            </div>
+        )
     }
 
     return (
