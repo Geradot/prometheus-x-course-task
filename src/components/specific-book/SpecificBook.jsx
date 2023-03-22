@@ -116,7 +116,7 @@ export default function SpecificBook() {
 
     if (isNotFound) {
         return (
-            <div className='container d-flex flex-column align-items-center'>
+            <div className='container d-flex flex-column align-items-center text-center'>
                 <p className="display-5">This book was not found</p>
                 <p className="fs-5">Try to edit the request</p>
             </div>

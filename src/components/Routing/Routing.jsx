@@ -13,7 +13,7 @@ export default function Routing() {
       <Route path="/" element={<Layout />}>
         <Route index element={<Signin />} />
         <Route
-          path="/cart"
+          path="cart"
           element={
             <PrivateRoute>
               <Cart />
@@ -21,7 +21,7 @@ export default function Routing() {
           }
         />
         <Route
-          path="/books"
+          path="books"
           element={
             <PrivateRoute>
               <BooksList />
@@ -29,7 +29,7 @@ export default function Routing() {
           }
         />
         <Route
-          path="/books/:id"
+          path="books/:id"
           element={
             <PrivateRoute>
               <SpecificBook />
