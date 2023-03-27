@@ -1,4 +1,4 @@
-import { getObject, clearCart, removeBookFromCart } from "../../js/helpers";
+import { getObject, clearCart, removeBookFromCart } from "../../js/functions";
 import CartEmpty from "./CartEmpty";
 import { useState, useEffect } from "react";
 import MyButton from "../UI/button/MyButton";

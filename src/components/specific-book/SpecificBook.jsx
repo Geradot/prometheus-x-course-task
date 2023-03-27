@@ -3,7 +3,7 @@ import classes from "./SpecificBook.module.css";
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import clsx from 'clsx';
-import { getObject, setUserCart, removeBookFromCart } from '../../js/helpers';
+import { getObject, setUserCart, removeBookFromCart } from '../../js/functions';
 import Loader from '../UI/Loader/Loader';
 import { BooksContext } from '../Context/BooksContext';
 import MyButton from '../UI/button/MyButton';
